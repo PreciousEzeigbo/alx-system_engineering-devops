@@ -1,19 +1,7 @@
 #!/usr/bin/env bash
-#Displays PID along with the process name
-
-# Get the process ID of the current script
-script_pid=$$
-
-# Function to get the process name from the /proc file system
-get_process_name() {
-    local pid=$1
-    local process_name=$(tr '\0' ' ' < /proc/"$pid"/cmdline)
-    echo "$process_name"
-}
-
 # Loop through /proc directory to find processes with names containing "bash"
 for pid in /proc/[0-9]*; do
-    process_name=$(get_process_name "${pid##*/}")
+    process_name=$(tr '\0' ' ' < "$pid"/cmdline)
     if [[ $process_name == *"bash"* ]]; then
         echo "${pid##*/} $process_name"
     fi
