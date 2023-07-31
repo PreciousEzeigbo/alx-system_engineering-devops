@@ -21,6 +21,6 @@ while true
 do
     echo "To infinity and beyond!"
     sleep 2
+    trap 'interrupt_signal' SIGNET
+    trap 'terminate_script' SIGTERM SIGQUIT
 done
-trap 'interrupt_signal' SIGNET
-trap 'terminate_script' SIGTERM SIGQUIT
