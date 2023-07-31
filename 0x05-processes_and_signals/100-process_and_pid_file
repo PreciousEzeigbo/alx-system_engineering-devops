@@ -1,4 +1,7 @@
 #!/usr/bin/env bash
+#Create the PID file containing the script's PID
+#Displays some sentences
+#Deletes the file upon recieving SIGOUT or SIGTERM
 
 pid_file="/var/run/myscript.pid"
 
