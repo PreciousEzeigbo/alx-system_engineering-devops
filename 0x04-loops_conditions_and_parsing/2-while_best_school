@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
-# This script will display "Best School" 10 times
-while [i <= 10]; do
+# This script will display "Best School" 10x
+
+i=0
+while [[ $i -lt 10 ]]; do
   echo Best School
   ((i++))
 done
