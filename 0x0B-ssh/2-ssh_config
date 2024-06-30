@@ -1,6 +1,4 @@
-#!/usr/bin/env bash
-# Custom client configuration file
-Host 54.196.29.159
-	User ubuntu
-	IdentityFile ~/.ssh/holberton
-	BatchMode yes
+# ssh config file
+Host *
+      PasswordAuthentication no
+      IdentifyFile ~/.ssh/school
