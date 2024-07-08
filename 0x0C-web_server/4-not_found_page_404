@@ -10,7 +10,7 @@ echo "Hello World!" | sudo tee /var/www/html/index.html
 
 # Performing a "moved permanently redirection" (301)
 string_replace="server_name _;\n\trewrite ^\/redirect_me https:\/\/github.com\/PreciousEzeigbo permanent;"
-sudo sed -i "s/server_name _;/$new_string/" /etc/nginx/sites-enabled/default
+sudo sed -i "s/server_name _;/$string_replace/" /etc/nginx/sites-enabled/default
 
 # Creating a 404 Custom error page
 echo "Ceci n'est pas une page" | sudo tee /var/www/html/404.html
