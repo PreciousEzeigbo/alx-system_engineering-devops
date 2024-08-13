@@ -15,11 +15,19 @@ def number_of_subscribers(subreddit):
     for a given subreddit.
     """
     url = "https://www.reddit.com/r/{}/about.json".format(subreddit)
-    headers = {"User-Agent": "Mozilla/5.0"}
-    response = requests.get(url, headers=headers, allow_redirects=False)
-    if response.status_code == 200:
-        data = response.json()
-        subscribers = data['data']['subscribers']
-        return subscribers
-    else:
+    headers = {"User-Agent": "MyRedditBot/0.1 by YourUsername"}
+
+    try:
+        response = requests.get(url, headers=headers, allow_redirects=False)
+        if response.status_code == 200:
+            data = response.json()
+            subscribers = data.get('data', {}).get('subscribers', 0)
+            return subscribers
+        else:
+            return 0
+    except requests.RequestException:
         return 0
+
+if __name__ == "__main__":
+    print(number_of_subscribers("programming"))  # Example: 756024
+    print(number_of_subscribers("this_is_a_fake_subreddit"))  # Example: 0
